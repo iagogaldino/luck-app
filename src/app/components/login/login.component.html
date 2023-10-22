@@ -1,0 +1,61 @@
+<div class="container p-0">
+  <div class="box-info">
+    <h1>😃 Olá! Seja muito bem-vindo(a)!</h1>
+    <p>
+      🍀 Está pronto para testar a sua sorte hoje? Cadastre-se e tenha a chance
+      de ganhar um delicioso espetinho premiado. Se você for um dos sortudos,
+      poderá vir desfrutar deste saboroso prêmio! 🍢🏆🎉
+    </p>
+  </div>
+
+  <div class="logo"></div>
+
+  <div class="box-form">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input type="name" matInput appearance="outline" placeholder="Ex. Informe seu nome" />
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Telefone</mat-label>
+      <span style="color: #ffcd49; margin-left: 5px;" matPrefix>+55 &nbsp;</span>
+      <input type="text" matInput placeholder="xx-xxxxx-xxxx" mask='(00) 00000-0000' />
+    </mat-form-field>
+  </div>
+
+  <div style="text-align: center">
+    <button type="button" class="btn btn-warning">Participar</button>
+  </div>
+
+  <div class="address">Rua Canadá, 83, Maria Goretti Juazeiro-BA</div>
+
+  <div class="box-users">
+    <div class="row">
+      <span
+        style="
+          background-color: #ffcd49;
+          padding: 10px 20px 2px 20px;
+          border-top-right-radius: 17px;
+          border-top-left-radius: 17px;
+          width: 100%;
+          font-weight: bolder;
+        "
+        >GANHADORES HOJE</span
+      >
+    </div>
+    <div
+      style="
+        background-color: #ffcd49;
+        width: 85%;
+        border-top-right-radius: 7px;
+        border-top-left-radius: 7px;
+        padding: 15px;
+      "
+      class=""
+
+    >
+      <div class="user-item blinking-list" [@moveItems] *ngFor="let item of usersWin">
+        <img class="emoj" src="./assets/images/emoj.png" alt="user"> <span style="margin-right: 5px; margin-left: 4px;"><b>{{item.name}}</b></span> ganhou um espetinho simples
+      </div>
+    </div>
+  </div>
+</div>
