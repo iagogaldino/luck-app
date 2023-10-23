@@ -1,12 +1,12 @@
 <div class="container p-0">
-  <div class="box-info">
+  <app-box-info>
     <h1>😃 Olá! Seja muito bem-vindo(a)!</h1>
     <p>
       🍀 Está pronto para testar a sua sorte hoje? Cadastre-se e tenha a chance
       de ganhar um delicioso espetinho premiado. Se você for um dos sortudos,
       poderá vir desfrutar deste saboroso prêmio! 🍢🏆🎉
     </p>
-  </div>
+  </app-box-info>
 
   <div class="logo"></div>
 
@@ -23,7 +23,7 @@
   </div>
 
   <div style="text-align: center">
-    <button type="button" class="btn btn-warning">Participar</button>
+    <button type="button" class="btn btn-warning" (click)="onClickEnter()">Participar</button>
   </div>
 
   <div class="address">Rua Canadá, 83, Maria Goretti Juazeiro-BA</div>

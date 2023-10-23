@@ -1,0 +1,32 @@
+.area-g {
+  display: flex;
+  justify-content: center;
+  border: 1px solid rgba(70, 70, 70, 0.429);
+  border-radius: 30px;
+  width: 90%;
+  margin: auto;
+}
+.aimg {
+  height: 350px;
+  width: 70px;
+  background-image: url("/assets/images/espetoWhite.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  margin-top: 20px;
+  background-image: url("/assets/logo.png");
+  background-size: 100% 100%;
+}
+
+.bfont {
+  font-size: 15px;
+  background-color: rgb(255, 162, 136);
+  color: black;
+  border-radius: 10px;
+  padding: 7px;
+}

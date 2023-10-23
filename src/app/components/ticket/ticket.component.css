@@ -1,0 +1,15 @@
+.aqrcode {
+  margin: auto;
+  background-color: rgb(230, 222, 222);
+  width: 250px;
+  height: 250px;
+  padding: 2px;
+}
+.logo {
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  margin-top: 20px;
+  background-image: url("/assets/logo.png");
+  background-size: 100% 100%;
+}

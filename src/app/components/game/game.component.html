@@ -1,0 +1,30 @@
+<app-body-content>
+  <app-box-info>
+    <h2 class="text-center">ACERTE O ESPETINHO PREMIADO!</h2>
+  </app-box-info>
+
+  <div class="logo"></div>
+
+
+  <div class="text-center mt-5" style="color: rgb(144, 122, 68);">Chances: 1x</div>
+  <div class="area-g mt-1">
+    <div
+      *ngFor="let item of items"
+      class="text-center"
+      style="width: 80px; display: grid; justify-content: center"
+    >
+      <div class="aimg"></div>
+      <div style="margin-top: -50px">
+        <span
+          class="bfont"
+          >{{ item.name }}</span
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-3">
+    <button type="button" class="btn btn-warning" (click)="onClickConfirm()">Confirmar</button>
+  </div>
+
+</app-body-content>

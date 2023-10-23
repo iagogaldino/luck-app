@@ -1,5 +1,6 @@
 import { trigger, transition, animate, keyframes, style } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -30,13 +31,16 @@ export class LoginComponent implements OnInit {
   displayItems: any[] = [];
   itemIndex = 0;
 
-  constructor() {
+  constructor(private _route: Router) {
 
    }
 
   ngOnInit() {
   }
 
+  onClickEnter(): void {
+    this._route.navigate(['confirmation']);
+  }
 
 
 }

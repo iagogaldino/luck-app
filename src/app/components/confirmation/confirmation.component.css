@@ -1,0 +1,17 @@
+.full-width {
+  width: 100%;
+}
+
+.box-form {
+  margin-top: 10px;
+  padding: 0px 20px 0px 20px;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  margin-top: 20px;
+  background-image: url("/assets/logo.png");
+  background-size: 100% 100%;
+}
