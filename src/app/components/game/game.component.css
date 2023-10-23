@@ -30,3 +30,24 @@
   border-radius: 10px;
   padding: 7px;
 }
+
+.bfont-true {
+  color: black;
+  background-color: gold;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+.trembling-div {
+  animation: shake 5s ease infinite; /* Nome da animação, duração, tipo de aceleração e repetição */
+}

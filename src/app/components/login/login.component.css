@@ -9,10 +9,9 @@
 }
 
 .logo {
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   margin: auto;
-  margin-top: 20px;
   background-image: url("/assets/logo.png");
   background-size: 100% 100%;
 }
@@ -22,7 +21,6 @@
 }
 
 .box-form {
-  margin-top: 10px;
   padding: 0px 20px 0px 20px;
 }
 
@@ -32,6 +30,7 @@
   width: 100%;
   bottom: 0;
   position: absolute;
+  height: 150px;
 }
 .address {
   color: white;

@@ -1,11 +1,14 @@
 <app-body-content>
   <app-box-info>
-    <h1>Confirmação</h1>
+    <div style="font-size: 18px; display: flex; align-items: center">
+      <mat-icon> bubble_chart</mat-icon
+      ><span style="margin-left: 10px">CONFIRMAÇÃO</span>
+    </div>
   </app-box-info>
   <div class="">
     <div class="logo"></div>
 
-    <div class="text-center mt-5">
+    <div class="text-center mt-3 p-3">
       Informe a palavra enviada para o número registrado no cadastro.
     </div>
 
@@ -28,7 +31,29 @@
     </div>
 
     <div class="text-center mt-3">
-      <button type="button" class="btn btn-warning" (click)="onClickConfirm()">Confirmar</button>
+      <button type="button" class="btn btn-warning" (click)="onClickConfirm()">Reenviar SMS</button>
     </div>
   </div>
+
+  <div
+  class=""
+  style="
+    text-align: right;
+    bottom: 0px;
+    position: absolute;
+    width: 100%;
+    background-color: #ffc107;
+  "
+>
+  <button
+    type="button"
+    class="btn btn-warning"
+    (click)="onClickConfirm()"
+    style="display: flex; float: right"
+  >
+    Confirmar
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </button>
+</div>
+
 </app-body-content>

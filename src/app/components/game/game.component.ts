@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { BtSheetComponent } from '../bt-sheet/bt-sheet.component';
 import { BtSheetService } from '../bt-sheet/bt-sheet.service';
+import { ConfigAppService } from 'src/app/services/config-app.service';
 
 @Component({
   selector: 'app-game',
@@ -9,25 +10,27 @@ import { BtSheetService } from '../bt-sheet/bt-sheet.service';
   styleUrls: ['./game.component.css'],
 })
 export class GameComponent implements OnInit {
-  public items = [
-    { name: 'Carne' },
-    { name: 'Frango' },
-    { name: 'Suíno' },
-    { name: 'Queijo' },
-  ];
+  public items = this.configAppService.itemsLuck;
+
+  itemSelected = 0;
 
   constructor(
     private _bottomSheet: MatBottomSheet,
-    private _btSheetService: BtSheetService
+    private _btSheetService: BtSheetService,
+    public configAppService: ConfigAppService
   ) {}
 
   ngOnInit() {
-    this.showSheetWIN();
+    // this.showSheetWIN();
 
   }
 
+  onClickItem(item: number):void {
+    this.itemSelected = item;
+  }
+
   onClickConfirm(): void {
-    // this.showSheetWIN();
+    this.showSheetWIN();
     // this.showSheetNoWIN();
   }
 
