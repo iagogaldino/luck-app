@@ -8,6 +8,7 @@ import {
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ConfigAppService } from 'src/app/services/config-app.service';
 import { WebServiceService } from 'src/app/services/web-service.service';
 import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 
@@ -24,7 +25,8 @@ export class ConfirmationComponent implements OnInit {
     private _webServiceService: WebServiceService,
     private _dialog: MatDialog,
     private _fb: FormBuilder,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private _configAppService: ConfigAppService
   ) {
     this.form = this._fb.group({
       code: ['', Validators.required],
@@ -47,6 +49,7 @@ export class ConfirmationComponent implements OnInit {
     this._webServiceService.validateCode(params).subscribe({
       next: () => {
         this._router.navigate(['game']);
+
       },
       error: (err) => {
         try {
@@ -54,10 +57,6 @@ export class ConfirmationComponent implements OnInit {
         } catch (err) {
           this.openDialog('Verifique o código informado');
         }
-        this._webServiceService.loading = false;
-      },
-      complete: () => {
-        console.log('completecompletecomplete');
         this._webServiceService.loading = false;
       },
     });
@@ -80,10 +79,9 @@ export class ConfirmationComponent implements OnInit {
       },
       error: (err) => {
         this.openDialog(err.error.message);
-      },
-      complete: () => {
         this._webServiceService.loading = false;
       },
+
     });
   }
 

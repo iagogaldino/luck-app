@@ -35,6 +35,7 @@ export class GameComponent implements OnInit {
   ngOnInit() {
     this.getConfigGame(true);
     this.repeatLoadConfigGame();
+    this.configAppService.codeConfirmed = true;
   }
 
   repeatLoadConfigGame(): void {
@@ -106,12 +107,13 @@ export class GameComponent implements OnInit {
   }
 
   vibrateWIN(): void {
-    navigator.vibrate(100);
-    navigator.vibrate(100);
-    navigator.vibrate(100);
+    navigator.vibrate(1000);
   }
 
   onClickConfirm(): void {
+    if (!this.gameStatus) {
+      return;
+    }
     this.validateItemGame();
   }
 
@@ -135,6 +137,6 @@ export class GameComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    console.log('ngOnDestroy');
+    this._bottomSheet.dismiss();
   }
 }

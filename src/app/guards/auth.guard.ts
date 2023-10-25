@@ -26,11 +26,24 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
+    if (!this._configAppService.token) {
+      this.router.navigate(['']);
+      return false;
+    }
+    if (
+      window.location.pathname.includes('confirmation') &&
+      this._configAppService.codeConfirmed
+    ) {
+      this.router.navigate(['game']);
+    }
 
-      if (!this._configAppService.token) {
-        this.router.navigate(['login'])
-        return false;
-      }
-      return true;
+    if (
+      window.location.pathname.includes('game') &&
+      this._configAppService.gameWin
+    ) {
+      this.router.navigate(['ticket']);
+    }
+
+    return true;
   }
 }

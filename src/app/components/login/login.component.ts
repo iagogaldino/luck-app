@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
     this._webServiceService.login(params).subscribe({
       next: (response) => {
         this.configAppService.token = response.token;
+        this._webServiceService.loading = false;
         switch (response.status) {
           case 1:
             {
@@ -85,23 +86,20 @@ export class LoginComponent implements OnInit {
         }
       },
       error: (err: HttpErrorResponse) => {
-        this.openDialog(err.error.message);
-      },
-      complete: () => {
         this._webServiceService.loading = false;
+        this.openDialog(err.error.message);
       },
     });
   }
 
   getConfigApp(): void {
-    this._webServiceService.loading = true;
+    this._webServiceService.loading = false;
     this._webServiceService.getConfigApp().subscribe({
       next: (response) => {
         console.log(response);
         this.usersWIN = response.usersWIN;
       },
-      error: (err: HttpErrorResponse) => {},
-      complete: () => {
+      error: (err: HttpErrorResponse) => {
         this._webServiceService.loading = false;
       },
     });
