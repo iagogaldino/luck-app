@@ -1,0 +1,31 @@
+.contentLoad {
+  background-color: rgba(0, 0, 0, 0.538);
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+}
+.rotating {
+  animation: rotate 3s linear infinite;
+}
+
+.logo {
+  border-radius: 50%;
+  border: 3px solid gold;
+}
+
+.shadowed {
+  box-shadow: 5px 5px 5px rgba(58, 58, 58, 0.2);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

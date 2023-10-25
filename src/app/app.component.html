@@ -1,1 +1,18 @@
+<div class="contentLoad" *ngIf="webServiceService.loading">
+  <div
+  class="shadowed"
+    style="
+      background-color: red;
+      padding: 10px;
+      display: grid;
+      text-align: center;
+      background-color: rgb(19, 19, 19);
+      border-radius: 10px;
+      color: rgb(52, 52, 52);
+    "
+  >
+    <img class="rotating logo" src="/assets/logo.png" width="100" />
+    <div style="margin-top: 15px;">Carregando: {{webServiceService.loading}}</div>
+  </div>
+</div>
 <router-outlet></router-outlet>

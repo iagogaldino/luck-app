@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BtSheetService {
-
-  typeSheet: 1 | 0 = 1;
-
+  typeSheet = 1;
+  codeFriend: number = 0;
 }

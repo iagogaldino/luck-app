@@ -1,53 +1,76 @@
 <app-body-content>
-  <app-box-info>
-    <div style="font-size: 18px; display: flex; align-items: center">
-      <mat-icon> bubble_chart</mat-icon
-      ><span style="margin-left: 10px">ACERTE O ESPETINHO PREMIADO!</span>
-    </div>
-  </app-box-info>
+  <div class="contentbg">
+    <div style="background: rgba(0, 0, 0, 0.461); height: 100vh;">
+      <app-box-info>
+        <div style="font-size: 18px; display: flex; align-items: center">
+          <mat-icon> bubble_chart</mat-icon
+          ><span style="margin-left: 10px">ACERTE O ESPETINHO PREMIADO!</span>
+        </div>
+      </app-box-info>
 
-  <div class="logo"></div>
+      <div class="logo"></div>
 
-  <div class="text-center mt-3" style="color: rgb(144, 122, 68)">
-    Chances: 1x
-  </div>
-  <div class="area-g mt-1">
-    <div
-      *ngFor="let item of items"
-      class="text-center"
-      style="width: 80px; display: grid; justify-content: center"
-      [ngClass]="{ 'trembling-div': item.id == itemSelected }"
-    >
-      <div class="aimg" (click)="onClickItem(item.id)"></div>
-      <div style="margin-top: -50px">
-        <span
-          class="bfont"
-          [ngClass]="{ 'bfont-true': item.id == itemSelected }"
-          >{{ item.name }}</span
+      <div class="text-center mt-3" style="color: rgb(144, 122, 68)">
+        Chances: {{ chance }}x
+      </div>
+      <div class="area-g mt-1">
+        <div
+          *ngFor="let item of items"
+          class="text-center"
+          style="width: 80px; display: grid; justify-content: center"
+          [ngClass]="{ 'trembling-div': item.idItemsGame == itemSelected, 'blinking': item.idItemsGame == itemGame }"
         >
+          <div class="aimg" (click)="onClickItem(item.idItemsGame)"></div>
+          <div style="margin-top: -50px">
+            <span
+              class="bfont"
+              [ngClass]="{
+                'bfont-true': item.idItemsGame == itemSelected,
+                itemGame: item.idItemsGame == itemGame
+              }"
+              >{{ item.name }}</span
+            >
+          </div>
+        </div>
+        <div *ngIf="!items.length && codeFriend != 0">
+          <div class="text-center box-info">
+            <h1 class="mt-2">Que pena!</h1>
+            <div class="mt-3">
+              Você não possui mais chances para jogar! Peça a seu amigo para se
+              cadastrar com o código abaixo e tenha mais uma chance
+            </div>
+            <div class="col-12 mt-3 mb-3">
+              <span class="box-code">{{ codeFriend }}</span>
+              <div class="mt-5" style="font-size: 12px">
+                Aguardando alguém se cadastrar com seu código ...
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class=""
+        style="
+          text-align: right;
+          bottom: 0px;
+          position: absolute;
+          width: 100%;
+          background-color: #ffc107;
+        "
+      >
+        <button
+          type="button"
+          class="btn btn-warning"
+          (click)="onClickConfirm()"
+          style="display: flex; float: right"
+          [disabled]="!itemSelected"
+        >
+          Confirmar
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
       </div>
     </div>
-  </div>
-
-  <div
-    class=""
-    style="
-      text-align: right;
-      bottom: 0px;
-      position: absolute;
-      width: 100%;
-      background-color: #ffc107;
-    "
-  >
-    <button
-      type="button"
-      class="btn btn-warning"
-      (click)="onClickConfirm()"
-      style="display: flex; float: right"
-      [disabled]="!itemSelected"
-    >
-      Confirmar
-      <mat-icon>keyboard_arrow_right</mat-icon>
-    </button>
   </div>
 </app-body-content>

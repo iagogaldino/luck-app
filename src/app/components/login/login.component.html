@@ -5,7 +5,7 @@
 
   <div class="logo"></div>
 
-  <div class="box-form">
+  <div class="box-form" [formGroup]="form">
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Nome</mat-label>
       <input
@@ -13,27 +13,29 @@
         matInput
         appearance="outline"
         placeholder="Ex. Informe seu nome"
+        formControlName="name"
       />
     </mat-form-field>
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Telefone</mat-label>
       <span style="color: #ffcd49; margin-left: 5px" matPrefix>+55 &nbsp;</span>
       <input
-        type="text"
+        type="tel"
         matInput
         placeholder="xx-xxxxx-xxxx"
         mask="(00) 00000-0000"
+        formControlName="phone"
       />
     </mat-form-field>
   </div>
 
   <div style="text-align: center">
-    <button type="button" class="btn btn-warning" (click)="onClickEnter()">
+    <button type="button" class="btn btn-warning" (click)="onClickEnter()" [disabled]="form.invalid">
       Participar
     </button>
   </div>
 
-  <div class="address">{{configAppService.address}}</div>
+  <div class="address">{{ configAppService.address }}</div>
 
   <div class="box-users">
     <div class="row">
@@ -58,17 +60,19 @@
         border-top-left-radius: 7px;
         padding: 15px;
         color: black;
+        height: 100%;
+        overflow: hidden;
       "
       class=""
     >
       <div
         class="user-item blinking-list"
         [@moveItems]
-        *ngFor="let item of configAppService.usersWIN"
+        *ngFor="let item of usersWIN"
       >
         <img class="emoj" src="./assets/images/emoj.png" alt="user" />
         <span style="margin-right: 5px; margin-left: 4px"
-          ><b>{{ item.name }}</b></span
+          ><b>{{ item.name | limitTo : 9 }}</b></span
         >
         ganhou um espetinho simples
       </div>

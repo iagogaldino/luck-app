@@ -4,7 +4,13 @@
     Você acertou em cheio no espetinho premiado! Agora, você pode visitar nosso
     estabelecimento e desfrutar do seu delicioso prêmio.
   </div>
-  <button type="button" class="btn btn-warning mt-5 mb-3" (click)="onClickGetTicket()">Confirmar</button>
+  <button
+    type="button"
+    class="btn btn-warning mt-5 mb-3"
+    (click)="onClickGetTicket()"
+  >
+    Confirmar
+  </button>
 </div>
 
 <div *ngIf="btSheetService.typeSheet === 0" class="text-center">
@@ -17,7 +23,26 @@
     <span
       style="background-color: rgb(0, 0, 0); padding: 10px; border-radius: 10px"
     >
-      1234
+      {{ btSheetService.codeFriend }}
+    </span>
+    <div class="mt-5" style="font-size: 12px">
+      Aguardando alguém se cadastrar com seu código ...
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="btSheetService.typeSheet === 2" class="text-center">
+  <h1 class="mt-2">Suas chances acabaram!</h1>
+  <div class="mt-3">
+    Mas não fique triste! Peça a seu amigo para se cadastrar com o código abaixo
+    e tenha mais uma chance
+  </div>
+  <div class="col-12 mt-3 mb-3">
+    <span
+      style="background-color: rgb(0, 0, 0); padding: 10px; border-radius: 10px"
+    >
+      {{ btSheetService.codeFriend }}
     </span>
     <div class="mt-5" style="font-size: 12px">
       Aguardando alguém se cadastrar com seu código ...

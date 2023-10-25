@@ -1,0 +1,21 @@
+.incode {
+  height: 80px;
+  width: 50px;
+  border-radius: 10px;
+  background-color: black;
+  border: solid 1px gold;
+  color: white;
+  text-align: center;
+  font-size: 25px;
+}
+
+.acode {
+  display: flex;
+  justify-content: center;
+  background: #0c0c0c;
+  width: 300px;
+  margin: auto;
+  padding: 40px;
+  border: 1px solid #ffd70014;
+  gap: 18px;
+}

@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ConfigAppService {
+  token = '';
+  flowType = '';
   loginTitle = `<h2>😃 Olá! Seja muito bem-vindo(a)!</h2>
 <p>
   🍀 Está pronto para testar a sua sorte hoje? Cadastre-se e tenha a chance

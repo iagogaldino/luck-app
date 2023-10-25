@@ -5,55 +5,52 @@
       ><span style="margin-left: 10px">CONFIRMAÇÃO</span>
     </div>
   </app-box-info>
-  <div class="">
+  <div [formGroup]="form">
     <div class="logo"></div>
 
-    <div class="text-center mt-3 p-3">
-      Informe a palavra enviada para o número registrado no cadastro.
+    <div class="text-center mt-1 p-3">
+      Informe o código SMS enviado para o número registrado no cadastro.
     </div>
 
-    <div class="box-form mt-3">
-      <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Seu código de confirmação</mat-label>
-        <span style="color: #ffcd49; margin-left: 5px" matPrefix># &nbsp;</span>
-        <input
-          type="number"
-          matInput
-          appearance="outline"
-          placeholder="Ex. Informe seu nome"
-        />
-      </mat-form-field>
+    <div class="mt-3">
+      <app-keypass (onCompleteCode)="onCompleteCode($event)"></app-keypass>
+    </div>
+
+    <div class="box-form mt-3"  >
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Código amigo (opcional)</mat-label>
         <span style="color: #ffcd49; margin-left: 5px" matPrefix># &nbsp;</span>
-        <input type="number" matInput mask="0000" />
+        <input
+          type="text"
+          matInput
+          maxlength="30"
+          formControlName="codeFriend"
+        />
       </mat-form-field>
     </div>
 
     <div class="text-center mt-3">
-      <button type="button" class="btn btn-warning" (click)="onClickConfirm()">Reenviar SMS</button>
+      <div>
+        <button
+          mat-button
+          type="button"
+          class="btn btn-warning"
+          (click)="onClickResendSendSms()"
+          color="primary"
+        >
+          Reenviar SMS
+        </button>
+      </div>
+      <div class="mt-5">
+        <button
+          type="button"
+          class="btn btn-warning"
+          (click)="onClickConfirm()"
+          [disabled]="form.invalid"
+        >
+          Confirmar
+        </button>
+      </div>
     </div>
   </div>
-
-  <div
-  class=""
-  style="
-    text-align: right;
-    bottom: 0px;
-    position: absolute;
-    width: 100%;
-    background-color: #ffc107;
-  "
->
-  <button
-    type="button"
-    class="btn btn-warning"
-    (click)="onClickConfirm()"
-    style="display: flex; float: right"
-  >
-    Confirmar
-    <mat-icon>keyboard_arrow_right</mat-icon>
-  </button>
-</div>
-
 </app-body-content>

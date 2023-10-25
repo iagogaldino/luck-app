@@ -1,0 +1,45 @@
+<div class="acode" [formGroup]="form">
+  <input
+    #inputElement1
+    class="incode"
+    type="tel"
+    matInput
+    appearance="outline"
+    formControlName="code1"
+    maxlength="1"
+    (ngModelChange)="changeFocus(2, $event)"
+  />
+
+  <input
+    #inputElement2
+    class="incode"
+    type="tel"
+    matInput
+    appearance="outline"
+    formControlName="code2"
+    maxlength="1"
+    (ngModelChange)="changeFocus(3, $event)"
+  />
+
+  <input
+  #inputElement3
+    class="incode"
+    type="tel"
+    matInput
+    appearance="outline"
+    formControlName="code3"
+    maxlength="1"
+    (ngModelChange)="changeFocus(4, $event)"
+  />
+
+  <input
+  #inputElement4
+    class="incode"
+    type="tel"
+    matInput
+    appearance="outline"
+    formControlName="code4"
+    maxlength="1"
+    (ngModelChange)="changeFocus('end', $event)"
+  />
+</div>
