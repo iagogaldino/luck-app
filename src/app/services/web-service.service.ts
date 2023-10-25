@@ -59,6 +59,12 @@ export class WebServiceService {
     return this._http.get(url);
   }
 
+  toggleItem(idGame: string): Observable<any> {
+    const url = `${this.url}/getConfigApp`;
+    return this._http.post(url, {idGame});
+  }
+
+
 
 
 

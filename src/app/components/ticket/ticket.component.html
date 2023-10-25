@@ -1,39 +1,65 @@
 <app-body-content>
+  <div style="background-color: rgb(0, 0, 0); height: 100vh; color: black;">
+
   <app-box-info>
     <div style="font-size: 20px; display: flex; align-items: center">
-      <mat-icon>inbox</mat-icon> <span style="margin-left: 10px;">CUPOM</span>
+      <mat-icon>inbox</mat-icon> <span style="margin-left: 10px">CUPOM</span>
     </div>
   </app-box-info>
 
   <div class="logo"></div>
 
+  <div *ngIf="stateItem" class="text-center mt-1">
+    <div>
+      <div
+        [ngClass]="{
+          present: stateItem,
+          balanco: stateItem,
+          explosion: stateItem == 2
+        }"
+        class="boxItem"
+      ></div>
+    </div>
+    <button class="mt-5 btn btn-warning" (click)="onClickBoxItem()">
+      Abrir brinde
+    </button>
+  </div>
+
+  <div *ngIf="stateItem == 0" class="boxdetailsitem mt-3">
+    <div class="brind" style="background-image: url({{configAppService.imgBrind}});"></div>
+    <div>
+      <h4>{{configAppService.titleBrind}}</h4>
+      Para desfrutar do seu prêmio, você deve visitar nosso estabelecimento e
+      apresentar o QR code abaixo.
+    </div>
+  </div>
+
+  <div *ngIf="stateItem == 0" class="aqrcode" [innerHTML]="safeSvg">
+    <img src="" width="100%" alt="" />
+  </div>
+  <div *ngIf="stateItem == 0" class="col-12 text-center berewe">
+    ESTE CUPOM SÓ É VÁLIDO PARA UMA ÚNICA UTILIZAÇÃO.
+  </div>
+
   <div
-    class="text-center mt-1"
-    style="width: 90%; margin: auto; color: gold; padding: 5px; font-size: 16px"
+    class=""
+    style="
+      text-align: right;
+      bottom: 0px;
+      position: absolute;
+      width: 100%;
+      background-color: #ffc107;
+    "
   >
-    Para desfrutar do seu prêmio, você deve visitar nosso estabelecimento e
-    apresentar o QR code abaixo.
-  </div>
-
-  <div class="text-center mt-3" (click)="onClickOpenLocation()">
-    <span
-      style="
-        margin: auto;
-        width: 90%;
-        background-color: rgb(0, 119, 255);
-        padding: 10px;
-        display: flex;
-        align-items: center;
-      "
-      ><mat-icon> location_on</mat-icon> Abrir localização</span
+    <button
+      type="button"
+      class="btn btn-warning"
+      style="display: flex; float: right"
+      (click)="onClickOpenLocation()"
     >
+      Abrir localização
+      <mat-icon>location_on</mat-icon>
+    </button>
   </div>
-
-  <div class="aqrcode mt-3" [innerHTML]="safeSvg">
-
-    <img src='' width="100%" alt="" />
-  </div>
-  <div class="col-12 text-center mt-5">
-    Este cupom só é válido para uma única utilização.
-  </div>
+</div>
 </app-body-content>

@@ -1,15 +1,114 @@
 .aqrcode {
   margin: auto;
-  background-color: rgb(230, 222, 222);
+  background-color: white;
   width: 250px;
   height: 250px;
   padding: 2px;
+  margin-top: -1px;
 }
+
+.berewe {
+  width: 250px;
+  margin: auto;
+  background-color:#dc3545;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top: 1px solid rgb(194, 194, 194);
+  padding-top: 5px;
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  padding-bottom: 7px;
+}
+
 .logo {
   width: 150px;
   height: 150px;
   margin: auto;
-  margin-top: 20px;
   background-image: url("/assets/logo.png");
   background-size: 100% 100%;
+}
+
+.video-container {
+  width: 100%;
+  margin: 0 auto; /* Centraliza o vídeo na div */
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(15deg);
+  }
+  20% {
+    transform: rotate(-10deg);
+  }
+  30% {
+    transform: rotate(5deg);
+  }
+  40% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+  60% {
+    transform: rotate(-3deg);
+  }
+  70% {
+    transform: rotate(2deg);
+  }
+  80% {
+    transform: rotate(-2deg);
+  }
+  90% {
+    transform: rotate(1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.balanco {
+  animation: swing 3s ease infinite;
+}
+
+.boxItem {
+  background-size: 100% 100%;
+  height: 150px;
+  width: 150px;
+  margin: auto;
+  background-color: white;
+}
+
+.brind {
+  background-image: url("/assets/images/espetinho.png");
+  height: 150px;
+  width: 350px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border: 5px solid white;
+  border-radius: 10px;
+}
+
+.present {
+  background-image: url("/assets/images/brinde.png");
+}
+
+.explosion {
+  background-image: url("/assets/images/explosion.gif");
+}
+
+.boxdetailsitem {
+  padding-top: 10px;
+  display: flex;
+  gap: 5px;
+  background-color: white;
+  margin: 10px;
+  width: 95%;
+  margin: auto;
+  font-size: 12px;
+  border: 1px solid rgba(217, 217, 217, 0.593);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
 }

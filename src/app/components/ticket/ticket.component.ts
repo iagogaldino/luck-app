@@ -18,6 +18,7 @@ export class TicketComponent implements OnInit {
   ) {}
 
   public safeSvg: any;
+  public stateItem = 1;
 
   ngOnInit() {
     this.getQRcode();
@@ -30,9 +31,13 @@ export class TicketComponent implements OnInit {
       next: (res) => {
         this.safeSvg = this.sanitizer.bypassSecurityTrustHtml(res.svg);
         this._webServiceService.loading = false;
+        //Verifica se o presente ja foi aberto!
+        if (res.stateItem) {
+          this.onClickBoxItem();
+        }
       },
       error: (err) => {
-        console.log('ERRRRO', err);
+
         this._webServiceService.loading = false;
       },
     });
@@ -40,5 +45,12 @@ export class TicketComponent implements OnInit {
 
   onClickOpenLocation(): void {
     window.open(this.configAppService.linkMap);
+  }
+
+  onClickBoxItem() {
+    this.stateItem = 2;
+    setInterval(() => {
+      this.stateItem = 0;
+    }, 1200);
   }
 }
