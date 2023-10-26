@@ -115,9 +115,10 @@ export class LoginComponent implements OnInit {
   }
 
   getConfigApp(): void {
-    this._webServiceService.loading = false;
+    this._webServiceService.loading = true;
     this._webServiceService.getConfigApp().subscribe({
       next: (response) => {
+        this._webServiceService.loading = false;
         this.usersWIN = this.shuffleArray(response.usersWIN);
         this.configAppService.linkMap = response.linkMap;
         this.configAppService.titleBrind = response.titleBrind;

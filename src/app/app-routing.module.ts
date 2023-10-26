@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'game', component: GameComponent, canActivate:[AuthGuard] },
   { path: 'ticket', component: TicketComponent, canActivate:[AuthGuard] },
   { path: 'message', component: MessageComponent, canActivate:[AuthGuard] },
-  { path: 'confirmation', component: ConfirmationComponent, canActivate:[AuthGuard] },
+  { path: 'confirmation', component: ConfirmationComponent, /*canActivate:[AuthGuard]*/ },
   { path: 'status-game', component: StatusGameComponent },
 
   // { path: '', component: CasesUseComponent },
