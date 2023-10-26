@@ -1,5 +1,5 @@
 <app-body-content>
-  <app-box-info>
+  <app-box-info *ngIf="!focusInput">
     <span [innerHTML]="configAppService.loginTitle"></span>
   </app-box-info>
 
@@ -15,6 +15,8 @@
         placeholder="Ex. Informe seu nome"
         formControlName="name"
         maxlength="30"
+        (focus)="onInputFocus()"
+        (blur)="onInputBlur()"
       />
     </mat-form-field>
     <mat-form-field class="full-width" appearance="outline">
@@ -26,12 +28,21 @@
         placeholder="xx-xxxxx-xxxx"
         mask="(00) 00000-0000"
         formControlName="phone"
+        (focus)="onInputFocus()"
+        (blur)="onInputBlur()"
+        #inPass
       />
     </mat-form-field>
   </div>
 
   <div style="text-align: center">
-    <button type="button" class="btn btn-warning" (click)="onClickEnter()" [disabled]="form.invalid">
+    <button
+      #btenter
+      type="button"
+      class="btn btn-warning"
+      (click)="onClickEnter()"
+      [disabled]="form.invalid"
+    >
       Participar
     </button>
   </div>

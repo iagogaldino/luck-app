@@ -7,7 +7,7 @@ import {
 } from '@angular/animations';
 import { Dialog } from '@angular/cdk/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Route, Router } from '@angular/router';
@@ -36,6 +36,9 @@ import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 export class LoginComponent implements OnInit {
   usersWIN: any = [];
   form: FormGroup;
+  focusInput = false;
+  @ViewChild('btenter') btenter!: ElementRef;
+  @ViewChild('inPass') inPass!: ElementRef;
 
   constructor(
     private _route: Router,
@@ -49,10 +52,27 @@ export class LoginComponent implements OnInit {
       phone: ['', Validators.required],
       // name: 'Iago', phone: '74988420307'
     });
+
+    this.form.get('phone')?.valueChanges.subscribe((value: string) => {
+      if (value.length == 11) {
+        this.inPass.nativeElement.blur();
+        this.btenter.nativeElement.focus();
+        this.onInputBlur();
+      }
+    });
   }
 
   ngOnInit() {
     this.getConfigApp();
+  }
+
+  onInputFocus(): void {
+    console.log('onInputFocus');
+    this.focusInput = true;
+  }
+  onInputBlur(): void {
+    console.log('onInputBlur');
+    this.focusInput = false;
   }
 
   onClickEnter(): void {

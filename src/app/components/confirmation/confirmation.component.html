@@ -8,7 +8,7 @@
   <div [formGroup]="form">
     <div class="logo"></div>
 
-    <div class="text-center mt-1 p-3">
+    <div class="text-center p-3">
       Informe o código SMS enviado para o número registrado no cadastro.
     </div>
 
@@ -16,10 +16,12 @@
       <app-keypass (onCompleteCode)="onCompleteCode($event)"></app-keypass>
     </div>
 
-    <div class="box-form mt-3"  >
+    <div class="box-form mt-3 text-center">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Código amigo (opcional)</mat-label>
-        <span style="color: #ffcd49; margin-left: 5px" matPrefix># &nbsp;</span>
+        <span style="color: #ffcd49; margin-left: 15px" matPrefix
+          ># &nbsp;</span
+        >
         <input
           type="text"
           matInput
@@ -30,7 +32,17 @@
     </div>
 
     <div class="text-center mt-3">
-      <div>
+      <div class="">
+        <button
+          type="button"
+          class="btn btn-warning"
+          (click)="onClickConfirm()"
+          [disabled]="form.invalid"
+        >
+          Confirmar
+        </button>
+      </div>
+      <div class="mt-3">
         <button
           mat-button
           type="button"
@@ -39,16 +51,6 @@
           color="primary"
         >
           Reenviar SMS
-        </button>
-      </div>
-      <div class="mt-5">
-        <button
-          type="button"
-          class="btn btn-warning"
-          (click)="onClickConfirm()"
-          [disabled]="form.invalid"
-        >
-          Confirmar
         </button>
       </div>
     </div>

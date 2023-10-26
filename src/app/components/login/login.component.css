@@ -94,3 +94,12 @@
 .blinking-list:nth-child(5) {
   animation-delay: 1.0s;
 }
+
+
+.fade-out-div {
+  transition: opacity 0.5s;
+}
+
+.fade-out {
+  opacity: 0;
+}
