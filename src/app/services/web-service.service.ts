@@ -9,7 +9,7 @@ import { ConfigAppService } from './config-app.service';
 export class WebServiceService {
 
   // private url = 'http://192.168.1.18:3000';
-  private url = '  http://luck-app.onrender.com';
+  private url = '  https://luck-app.onrender.com';
 
   private httpOptions = {
     headers: new HttpHeaders({
