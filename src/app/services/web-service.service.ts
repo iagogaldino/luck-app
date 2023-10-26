@@ -7,13 +7,14 @@ import { ConfigAppService } from './config-app.service';
   providedIn: 'root',
 })
 export class WebServiceService {
+
   // private url = 'http://192.168.1.18:3000';
-  private url = 'https://luck-app.onrender.com';
+  private url = '  https://luck-app.onrender.com';
 
   private httpOptions = {
     headers: new HttpHeaders({
-      Accept: 'text/plain',
-    }),
+      'Accept': 'text/plain'
+    })
   };
   public loading = false;
 
@@ -62,8 +63,13 @@ export class WebServiceService {
 
   toggleItem(idGame: string): Observable<any> {
     const url = `${this.url}/getConfigApp`;
-    return this._http.post(url, { idGame });
+    return this._http.post(url, {idGame});
   }
+
+
+
+
+
 
   objectToQueryParams(obj: any) {
     const queryParams = [];

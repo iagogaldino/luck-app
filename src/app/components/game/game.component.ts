@@ -144,5 +144,6 @@ export class GameComponent implements OnInit {
 
   ngOnDestroy() {
     this._bottomSheet.dismiss();
+    clearInterval(this.tInterval);
   }
 }

@@ -7,6 +7,7 @@ import { TicketComponent } from './components/ticket/ticket.component';
 import { CasesUseComponent } from './components/cases-use/cases-use.component';
 import { MessageComponent } from './components/message/message.component';
 import { AuthGuard } from './guards/auth.guard';
+import { StatusGameComponent } from './components/status-game/status-game.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'ticket', component: TicketComponent, canActivate:[AuthGuard] },
   { path: 'message', component: MessageComponent, canActivate:[AuthGuard] },
   { path: 'confirmation', component: ConfirmationComponent, canActivate:[AuthGuard] },
+  { path: 'status-game', component: StatusGameComponent },
 
   // { path: '', component: CasesUseComponent },
 ];

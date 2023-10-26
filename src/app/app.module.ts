@@ -33,6 +33,7 @@ import { Interceptor } from './core/interceptor';
 import { AuthGuard } from './guards/auth.guard';
 import { ConfigAppService } from './services/config-app.service';
 import { KeypassComponent } from './shared/keypass/keypass.component';
+import { StatusGameComponent } from './components/status-game/status-game.component';
 
 const MaterialComponents = [
   MatInputModule,
@@ -57,7 +58,8 @@ const MaterialComponents = [
     CasesUseComponent,
     DialogComponent,
     LimitToPipe,
-    KeypassComponent
+    KeypassComponent,
+    StatusGameComponent
   ],
   imports: [
     ...MaterialComponents,

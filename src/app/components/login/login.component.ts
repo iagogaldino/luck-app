@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
   focusInput = false;
   @ViewChild('btenter') btenter!: ElementRef;
   @ViewChild('inPass') inPass!: ElementRef;
+  tInterval: any;
 
   constructor(
     private _route: Router,
@@ -64,6 +65,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.getConfigApp();
+    this.shutim();
   }
 
   onInputFocus(): void {
@@ -116,13 +118,23 @@ export class LoginComponent implements OnInit {
     this._webServiceService.loading = false;
     this._webServiceService.getConfigApp().subscribe({
       next: (response) => {
-        console.log(response);
-        this.usersWIN = response.usersWIN;
+        this.usersWIN = this.shuffleArray(response.usersWIN);
+        this.configAppService.linkMap = response.linkMap;
+        this.configAppService.titleBrind = response.titleBrind;
+        if (!response.statusGame) {
+          this._route.navigate(['status-game']);
+        }
       },
       error: (err: HttpErrorResponse) => {
         this._webServiceService.loading = false;
       },
     });
+  }
+
+  shutim(): void {
+    this.tInterval = setInterval(() => {
+      this.usersWIN = this.shuffleArray(this.usersWIN);
+    }, 3500);
   }
 
   openDialog(params: any) {
@@ -131,5 +143,21 @@ export class LoginComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  shuffleArray<T>(array: T[]): T[] {
+    const shuffledArray = [...array];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [
+        shuffledArray[j],
+        shuffledArray[i],
+      ];
+    }
+    return shuffledArray;
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.tInterval);
   }
 }

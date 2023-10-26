@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ConfigAppService {
-  linkMap = 'https://maps.app.goo.gl/8XxbJinGfXbWdPJK7';
   imgBrind = '/assets/images/espetinho-brinde.png';
-  titleBrind = 'Você ganhou um espetinho completo!';
+  linkMap = '';
+  titleBrind = '';
   token = '';
   flowType = '';
   codeConfirmed = false;
