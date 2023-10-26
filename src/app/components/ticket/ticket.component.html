@@ -12,6 +12,7 @@
   <div *ngIf="stateItem" class="text-center mt-1">
     <div>
       <div
+      (click)="onClickBoxItem()"
         [ngClass]="{
           present: stateItem,
           balanco: stateItem,
@@ -20,12 +21,9 @@
         class="boxItem"
       ></div>
     </div>
-    <button class="mt-5 btn btn-warning" (click)="onClickBoxItem()">
-      Abrir brinde
-    </button>
   </div>
 
-  <div *ngIf="stateItem == 0" class="boxdetailsitem mt-3">
+  <div *ngIf="stateItem == 0" class="boxdetailsitem mt-1">
     <div class="brind" style="background-image: url({{configAppService.imgBrind}});"></div>
     <div>
       <h4>{{configAppService.titleBrind}}</h4>

@@ -22,6 +22,7 @@ export class GameComponent implements OnInit {
   itemGame = 0;
   codeFriend = 0;
   tInterval: any;
+  winGame = false;
 
   constructor(
     private _bottomSheet: MatBottomSheet,
@@ -50,6 +51,7 @@ export class GameComponent implements OnInit {
     this._webServiceService.validateItemGame(idItem).subscribe({
       next: (res) => {
         this._webServiceService.loading = false;
+        this.winGame = true;
         this.showSheetWIN();
         this.vibrateWIN();
       },
@@ -114,6 +116,10 @@ export class GameComponent implements OnInit {
     if (!this.gameStatus) {
       return;
     }
+    if (this.winGame) {
+      this._router.navigate(['ticket']);
+      return;
+    }
     this.validateItemGame();
   }
 
@@ -132,7 +138,7 @@ export class GameComponent implements OnInit {
     const dialogRef = this._dialog.open(DialogComponent, { data: params });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      this._router.navigate(['ticket']);
     });
   }
 

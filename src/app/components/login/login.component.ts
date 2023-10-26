@@ -45,9 +45,9 @@ export class LoginComponent implements OnInit {
     private _fb: FormBuilder
   ) {
     this.form = this._fb.group({
-      // name: ['', Validators.required],
-      // phone: ['', Validators.required],
-      name: 'Iago', phone: '74988420307'
+      name: ['', Validators.required],
+      phone: ['', Validators.required],
+      // name: 'Iago', phone: '74988420307'
     });
   }
 
