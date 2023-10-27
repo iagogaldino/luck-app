@@ -51,12 +51,15 @@ export class GameComponent implements OnInit {
   }
 
   public confirmName(): void {
+    this._webServiceService.loading = true;
     this._webServiceService
       .confirmName(this.form.value)
       .subscribe({ next: (resp) => {
         this.userName = this.form.get('name')?.value;
+        this._webServiceService.loading = false;
       }, error: (err) => {
         alert(err.error.message)
+        this._webServiceService.loading = false;
       } });
   }
 
