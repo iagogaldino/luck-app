@@ -17,6 +17,7 @@ export class TicketComponent implements OnInit {
     public configAppService: ConfigAppService
   ) {}
 
+  public brindName = '';
   public safeSvg: any;
   public stateItem = 1;
 
@@ -31,16 +32,20 @@ export class TicketComponent implements OnInit {
       next: (res) => {
         this.safeSvg = this.sanitizer.bypassSecurityTrustHtml(res.svg);
         this._webServiceService.loading = false;
+        this.brindName = this.toUpCa(res.description);
         //Verifica se o presente ja foi aberto!
         if (res.stateItem) {
           this.onClickBoxItem();
         }
       },
       error: (err) => {
-
         this._webServiceService.loading = false;
       },
     });
+  }
+
+  toUpCa(str: string): string {
+    return str.toUpperCase();
   }
 
   onClickOpenLocation(): void {

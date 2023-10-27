@@ -11,6 +11,7 @@ export class ConfigAppService {
   flowType = '';
   codeConfirmed = false;
   gameWin = false;
+  userName = '';
   loginTitle = `<h2>😃 Olá! Seja muito bem-vindo(a)!</h2>
 <p>
   🍀 Está pronto para testar a sua sorte hoje? Cadastre-se e tenha a chance

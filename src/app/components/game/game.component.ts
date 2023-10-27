@@ -7,6 +7,7 @@ import { WebServiceService } from 'src/app/services/web-service.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 import { Route, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-game',
@@ -23,6 +24,8 @@ export class GameComponent implements OnInit {
   codeFriend = 0;
   tInterval: any;
   winGame = false;
+  userName = '';
+  form!: FormGroup;
 
   constructor(
     private _bottomSheet: MatBottomSheet,
@@ -30,16 +33,34 @@ export class GameComponent implements OnInit {
     public configAppService: ConfigAppService,
     public _webServiceService: WebServiceService,
     private _dialog: MatDialog,
-    private _router: Router
+    private _router: Router,
+    private _fb: FormBuilder
   ) {}
 
   ngOnInit() {
+    this.createForm();
     this.getConfigGame(true);
     this.repeatLoadConfigGame();
     this.configAppService.codeConfirmed = true;
+    this.userName = this.configAppService.userName;
   }
 
-  repeatLoadConfigGame(): void {
+  ngOnDestroy() {
+    this._bottomSheet.dismiss();
+    clearInterval(this.tInterval);
+  }
+
+  public confirmName(): void {
+    this._webServiceService
+      .confirmName(this.form.value)
+      .subscribe({ next: (resp) => {
+        this.userName = this.form.get('name')?.value;
+      }, error: (err) => {
+        alert(err.error.message)
+      } });
+  }
+
+  private repeatLoadConfigGame(): void {
     this.tInterval = setInterval(() => {
       this.getConfigGame(false);
     }, 5000);
@@ -108,7 +129,7 @@ export class GameComponent implements OnInit {
     navigator.vibrate(100);
   }
 
-  vibrateWIN(): void {
+  private vibrateWIN(): void {
     navigator.vibrate(1000);
   }
 
@@ -142,8 +163,9 @@ export class GameComponent implements OnInit {
     });
   }
 
-  ngOnDestroy() {
-    this._bottomSheet.dismiss();
-    clearInterval(this.tInterval);
+  private createForm(): void {
+    this.form = this._fb.group({
+      name: ['', Validators.required],
+    });
   }
 }

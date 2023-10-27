@@ -1,64 +1,63 @@
 <app-body-content>
-  <div style="background-color: rgb(0, 0, 0); height: 100vh; color: black;">
+  <div style="background-color: rgb(0, 0, 0); height: 100vh; color: black">
+    <app-box-info>
+      <div style="font-size: 20px; display: flex; align-items: center">
+        <mat-icon>inbox</mat-icon> <span style="margin-left: 10px">CUPOM</span>
+      </div>
+    </app-box-info>
 
-  <app-box-info>
-    <div style="font-size: 20px; display: flex; align-items: center">
-      <mat-icon>inbox</mat-icon> <span style="margin-left: 10px">CUPOM</span>
+    <div class="logo"></div>
+
+    <div *ngIf="stateItem" class="text-center bbmw">
+      <div>
+        <div
+          (click)="onClickBoxItem()"
+          [ngClass]="{
+            present: stateItem,
+            balanco: stateItem,
+            explosion: stateItem == 2
+          }"
+          class="boxItem"
+        ></div>
+      </div>
     </div>
-  </app-box-info>
 
-  <div class="logo"></div>
-
-  <div *ngIf="stateItem" class="text-center mt-1">
-    <div>
-      <div
-      (click)="onClickBoxItem()"
-        [ngClass]="{
-          present: stateItem,
-          balanco: stateItem,
-          explosion: stateItem == 2
-        }"
-        class="boxItem"
-      ></div>
+    <div *ngIf="stateItem == 0" class="boxdetailsitem mt-1">
+      <h4 style="color: rgb(93, 93, 93);">Seu brinde</h4>
+      <div class="brind">
+        <div class="aqrcodeimg" [innerHTML]="safeSvg"></div>
+      </div>
+      <div class="mt-2">
+        <div class="ffb mb-2">{{ brindName }}</div>
+        Para desfrutar do seu prêmio, você deve visitar nosso estabelecimento e
+        apresentar o QR code abaixo.
+      </div>
     </div>
-  </div>
 
-  <div *ngIf="stateItem == 0" class="boxdetailsitem mt-1">
-    <div class="brind" style="background-image: url({{configAppService.imgBrind}});"></div>
-    <div>
-      <h4>Seu brinde</h4>
-      <h3>{{configAppService.titleBrind}}</h3>
-      Para desfrutar do seu prêmio, você deve visitar nosso estabelecimento e
-      apresentar o QR code abaixo.
+    <!-- <div *ngIf="stateItem == 0" class="aqrcode" [innerHTML]="safeSvg"></div> -->
+    <div *ngIf="stateItem == 0" class="col-12 text-center berewe">
+      ESTE CUPOM SÓ É VÁLIDO PARA UMA ÚNICA UTILIZAÇÃO.
     </div>
-  </div>
 
-  <div *ngIf="stateItem == 0" class="aqrcode" [innerHTML]="safeSvg">
-    <img src="" width="100%" alt="" />
-  </div>
-  <div *ngIf="stateItem == 0" class="col-12 text-center berewe">
-    ESTE CUPOM SÓ É VÁLIDO PARA UMA ÚNICA UTILIZAÇÃO.
-  </div>
-
-  <div
-    class=""
-    style="
-      text-align: right;
-      bottom: 0px;
-      position: absolute;
-      width: 100%;
-      background-color: #ffc107;
-    "
-  >
-    <button
-      type="button"
-      class="btn btn-warning"
-      style="display: flex; float: right"
-      (click)="onClickOpenLocation()"
+    <div
+      class=""
+      style="
+        text-align: right;
+        bottom: 0px;
+        position: absolute;
+        width: 100%;
+        background-color: #ffc107;
+      "
     >
-      Abrir localização
-      <mat-icon>location_on</mat-icon>
-    </button>
+      <button
+        type="button"
+        class="btn btn-warning"
+        style="display: flex; float: right"
+        (click)="onClickOpenLocation()"
+      >
+        Abrir localização
+        <mat-icon>location_on</mat-icon>
+      </button>
+    </div>
   </div>
-</div>
 </app-body-content>

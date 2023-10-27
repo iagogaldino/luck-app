@@ -76,6 +76,7 @@ export class ConfirmationComponent implements OnInit {
     this._webServiceService.sendSMS().subscribe({
       next: (res) => {
         this.openDialog(res.message);
+        this._webServiceService.loading = false;
       },
       error: (err) => {
         this.openDialog(err.error.message);

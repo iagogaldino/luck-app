@@ -8,8 +8,9 @@ import { ConfigAppService } from './config-app.service';
 })
 export class WebServiceService {
 
-  // private url = 'http://192.168.1.18:3000';
-  private url = '  https://luck-app.onrender.com';
+  // private url = 'http://localhost:3000';
+  private url = 'http://192.168.1.18:3000';
+  // private url = '  https://luck-app.onrender.com';
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -65,6 +66,13 @@ export class WebServiceService {
     const url = `${this.url}/getConfigApp`;
     return this._http.post(url, {idGame});
   }
+
+  confirmName(name: string): Observable<any> {
+    const url = `${this.url}/confirmName`;
+    return this._http.post(url, name);
+  }
+
+
 
 
 

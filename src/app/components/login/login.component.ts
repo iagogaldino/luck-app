@@ -49,9 +49,8 @@ export class LoginComponent implements OnInit {
     private _fb: FormBuilder
   ) {
     this.form = this._fb.group({
-      name: ['', Validators.required],
       phone: ['', Validators.required],
-      // name: 'Iago', phone: '74988420307'
+      // phone: '1234'
     });
 
     this.form.get('phone')?.valueChanges.subscribe((value: string) => {
@@ -70,11 +69,11 @@ export class LoginComponent implements OnInit {
 
   onInputFocus(): void {
     console.log('onInputFocus');
-    this.focusInput = true;
+    // this.focusInput = true;
   }
   onInputBlur(): void {
     console.log('onInputBlur');
-    this.focusInput = false;
+    // this.focusInput = false;
   }
 
   onClickEnter(): void {
@@ -83,6 +82,7 @@ export class LoginComponent implements OnInit {
     this._webServiceService.login(params).subscribe({
       next: (response) => {
         this.configAppService.token = response.token;
+        this.configAppService.userName = response.userName;
         this._webServiceService.loading = false;
         switch (response.status) {
           case 1:
