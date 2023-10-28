@@ -20,12 +20,12 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
 import { BodyContentComponent } from './shared/body-content/body-content.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { BtSheetComponent } from './components/bt-sheet/bt-sheet.component';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { MessageComponent } from './components/message/message.component';
 import { CasesUseComponent } from './components/cases-use/cases-use.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './shared/dialog/dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LimitToPipe } from './pipes/limitToPipe.pipe';
@@ -34,6 +34,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { ConfigAppService } from './services/config-app.service';
 import { KeypassComponent } from './shared/keypass/keypass.component';
 import { StatusGameComponent } from './components/status-game/status-game.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 const MaterialComponents = [
   MatInputModule,
@@ -41,7 +42,7 @@ const MaterialComponents = [
   MatIconModule,
   MatBottomSheetModule,
   MatProgressBarModule,
-  MatDialogModule
+  MatDialogModule,
 ];
 
 @NgModule({
@@ -59,7 +60,7 @@ const MaterialComponents = [
     DialogComponent,
     LimitToPipe,
     KeypassComponent,
-    StatusGameComponent
+    StatusGameComponent,
   ],
   imports: [
     ...MaterialComponents,
@@ -70,16 +71,19 @@ const MaterialComponents = [
     BrowserAnimationsModule,
     RouterModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     ConfigAppService,
     AuthGuard,
-    provideEnvironmentNgxMask(), {
+    provideEnvironmentNgxMask(),
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,
       multi: true,
-    }],
+    },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
