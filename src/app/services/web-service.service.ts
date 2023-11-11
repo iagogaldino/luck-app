@@ -2,15 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, tap } from 'rxjs';
 import { ConfigAppService } from './config-app.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WebServiceService {
 
-  // private url = 'http://localhost:3000';
-  // private url = 'http://192.168.1.18:3000';
-  private url = '  https://luck-app.onrender.com';
+  private url =  environment.apiUrl;
 
   private httpOptions = {
     headers: new HttpHeaders({
